@@ -4,13 +4,13 @@ const turnIndicator = document.createElement("h4");
 const modal = document.querySelector('.modal-container');
 
 // Set the text content, color, and alignment for the turn indicator and add it to the body
-turnIndicator.textContent = "Current turn: White";
+turnIndicator.textContent = "Current turn: Bitcoin";
 turnIndicator.style.color = 'grey';
 turnIndicator.style.textAlign = 'center';
 document.body.appendChild(turnIndicator);
 
 // Initialize the variables for the current player, history, and selected piece
-let currentPlayer = "White";
+let currentPlayer = "Bitcoin";
 let history = [];
 let selectedPiece = null;
 
@@ -32,21 +32,23 @@ let board = [];
 for (let i = 0; i < 8; i++) {
     board[i] = [];
     for (let j = 0; j < 8; j++) {
-        if (i === 0 & j === 2) board[i][j] = new Piece("Black", "bailout.png", "queen"); // Black queen
-        else if (i === 0 & j === 5) board[i][j] = new Piece("Black", "bailout.png", "queen"); // Black queen
-        else if (i === 1 & j === 4) board[i][j] = new Piece("Black", "bailout.png", "queen"); // Black queen
-        else if (i === 0 & j === 4) board[i][j] = new Piece("Black", "aid.png", "king"); // Black king
-        else if (i === 2) board[i][j] = new Piece("", "  ", ""); // White pawn
-        else if (i === 3) board[i][j] = new Piece("White", "sir.png", "pawn"); // White pawn
-        else if (i === 4) board[i][j] = new Piece("White", "sir.png", "pawn"); // White pawn
-        else if (i === 5) board[i][j] = new Piece("White", "sir.png", "pawn"); // White pawn
-        else if (i === 6) board[i][j] = new Piece("White", "sir.png", "pawn"); // White pawn
-        else if (i === 7) board[i][j] = new Piece("White", "sir.png", "pawn"); // White pawn
+        if (i === 0 & j === 2) board[i][j] = new Piece("Big Bank", "bailout.png", "queen"); // Big Bank queen
+        else if (i === 0 & j === 5) board[i][j] = new Piece("Big Bank", "bailout.png", "queen"); // Big Bank queen
+        else if (i === 1 & j === 4) board[i][j] = new Piece("Big Bank", "bailout.png", "queen"); // Big Bank queen
+        else if (i === 1 & j === 2) board[i][j] = new Piece("Big Bank", "bailout.png", "queen"); // Big Bank queen
+        else if (i === 1 & j === 5) board[i][j] = new Piece("Big Bank", "bailout.png", "queen"); // Big Bank queen
+        else if (i === 0 & j === 4) board[i][j] = new Piece("Big Bank", "aid.png", "king"); // Big Bank king
+        else if (i === 2) board[i][j] = new Piece("Bitcoin", "sir.png", "pawn"); // Bitcoin pawn
+        else if (i === 3) board[i][j] = new Piece("Bitcoin", "sir.png", "pawn"); // Bitcoin pawn
+        else if (i === 4) board[i][j] = new Piece("Bitcoin", "sir.png", "pawn"); // Bitcoin pawn
+        else if (i === 5) board[i][j] = new Piece("Bitcoin", "sir.png", "pawn"); // Bitcoin pawn
+        else if (i === 6) board[i][j] = new Piece("Bitcoin", "sir.png", "pawn"); // Bitcoin pawn
+        else if (i === 7) board[i][j] = new Piece("Bitcoin", "sir.png", "pawn"); // Bitcoin pawn
         else if (i < 2) {
             if (j === 0 || j === 7) board[i][j] = new Piece("", "  ", "");
             else if (j === 1 || j === 6) board[i][j] = new Piece("", "  ", "");
             else if (j === 2 || j === 5) board[i][j] = new Piece("", "  ", "");
-            else if (j === 3) board[i][j] = new Piece("Black", "bailout.png", "queen");
+            else if (j === 3) board[i][j] = new Piece("Big Bank", "bailout.png", "queen");
             else if (j === 4) board[i][j] = new Piece("", "  ", "");
         } else board[i][j] = new Piece("", "  ", "");
     }
@@ -148,7 +150,7 @@ function movePiece(selectedPiece, targetPiece) {
     if (move) {
         board[toRow][toCol] = board[fromRow][fromCol];
         board[fromRow][fromCol] = new Piece("", "  ", "");
-        currentPlayer = currentPlayer === "White" ? "Black" : "White";
+        currentPlayer = currentPlayer === "Bitcoin" ? "Big Bank" : "Bitcoin";
         turnIndicator.textContent = `Current turn: ${currentPlayer}`;
         if (!((toRow == 0 || toRow == 7) && board[toRow][toCol].type === "pawn")) { updateBoard(board, true); }
         isTheEnd();
@@ -156,7 +158,7 @@ function movePiece(selectedPiece, targetPiece) {
 }
 
 function pawnMove(thisBoard, fRow, fCol, tRow, tCol, player, enPassant, testCheck) {
-    const direction = player === "White" ? -1 : 1;
+    const direction = player === "Bitcoin" ? -1 : 1;
     // Normal move
     if ((fRow + direction === tRow) && (fCol === tCol)
         && !thisBoard[tRow][fCol].color) {
@@ -169,7 +171,7 @@ function pawnMove(thisBoard, fRow, fCol, tRow, tCol, player, enPassant, testChec
         if (testCheck) return !isCheck(thisBoard, fRow, fCol, tRow, tCol, false); else return true;
     }
     // En passant move
-    else if (((fRow === 3 && player === "White") || (fRow === 4 && player === "Black")) && (fCol + 1 === tCol || fCol - 1 === tCol)
+    else if (((fRow === 3 && player === "Bitcoin") || (fRow === 4 && player === "Big Bank")) && (fCol + 1 === tCol || fCol - 1 === tCol)
         && thisBoard[fRow][tCol].type === "pawn" && thisBoard[fRow][tCol].color !== player
         && (fRow + direction === tRow) && (history[history.length - 2][tRow + direction][tCol].type == "pawn")
         && (history[history.length - 1][tRow + direction][tCol].type == "")) {
@@ -231,60 +233,8 @@ function kingMove(thisBoard, fRow, fCol, tRow, tCol, testCasteling, testCheck) {
     // The king can move one square in any direction
     if (Math.abs(fRow - tRow) <= 1 && Math.abs(fCol - tCol) <= 1) {
         if (testCheck) return !isCheck(thisBoard, fRow, fCol, tRow, tCol, testCasteling); else return true;
-        // Test if the castling move is possible
-    } else if (testCasteling) {
-        if (currentPlayer === "White") {
-            if (wBigCastle && tRow == 7 && tCol == 2 && thisBoard[7][1].color === "" && thisBoard[7][2].color === "" && thisBoard[7][3].color === "")
-                castleMove("White", "big");
-            else if (wSmallCastle && tRow == 7 && tCol == 6 && thisBoard[7][5].color === "" && thisBoard[7][6].color === "")
-                castleMove("White", "small");
-        } else if (bBigCastle && tRow == 0 && tCol == 2 && thisBoard[0][1].color === "" && thisBoard[0][2].color === "" && thisBoard[0][3].color === "")
-            castleMove("Black", "big");
-        else if (bSmallCastle && tRow == 0 && tCol == 6 && thisBoard[0][5].color === "" && thisBoard[0][6].color === "")
-            castleMove("Black", "small");
     }
     return false;
-}
-
-function castleMove(color, side) {
-    let otherPlayer = currentPlayer === "White" ? "Black" : "White";
-    let row = color === "White" ? 7 : 0;
-    let king = color === "White" ? "\u2654" : "\u265A";
-    let rook = color === "White" ? "\u2656" : "\u265C";
-    let columns = side === "big" ? [2, 3, 4] : [4, 5, 6];
-    for (let col of columns) {
-        for (let i = 0; i < 8; i++) {
-            for (let j = 0; j < 8; j++) {
-                if (board[i][j].color !== currentPlayer) {
-                    if (board[i][j].type === "pawn") { if (pawnMove(board, i, j, row, col, otherPlayer, false, false)) return; }
-                    else if (board[i][j].type === "knight") { if (knightMove(board, i, j, row, col, false)) return; }
-                    else if (board[i][j].type === "bishop") { if (bishopMove(board, i, j, row, col, false)) return; }
-                    else if (board[i][j].type === "rook") { if (rookMove(board, i, j, row, col, false, false)) return; }
-                    else if (board[i][j].type === "queen") { if (queenMove(board, i, j, row, col, false)) return; }
-                    else if (board[i][j].type === "king") { if (kingMove(board, i, j, row, col, false, false)) return; }
-                }
-            }
-        }
-    }
-    board[row][4] = new Piece("", "  ", "");
-    if (side === "big") {
-        board[row][0] = new Piece("", "  ", "");
-        board[row][2] = new Piece(color, king, "king");
-        board[row][3] = new Piece(color, rook, "rook");
-    } else {
-        board[row][7] = new Piece("", "  ", "");
-        board[row][6] = new Piece(color, king, "king");
-        board[row][5] = new Piece(color, rook, "rook");
-    }
-    color === "White" ? (wBigCastle = false, wSmallCastle = false) : (bBigCastle = false, bSmallCastle = false);
-    if (color === "White" && !wBigCastleAt) { wBigCastleAt = history.length; }
-    if (color === "White" && !wSmallCastleAt) { wSmallCastleAt = history.length; }
-    if (color === "Black" && !bBigCastleAt) { bBigCastleAt = history.length; }
-    if (color === "Black" && !bSmallCastleAt) { bSmallCastleAt = history.length; }
-    currentPlayer = currentPlayer === "White" ? "Black" : "White";
-    turnIndicator.textContent = `Current turn: ${currentPlayer}`;
-    updateBoard(board, true);
-    isTheEnd();
 }
 
 function isCheck(board, fRow, fCol, tRow, tCol, testCasteling) {
@@ -310,7 +260,7 @@ function isCheck(board, fRow, fCol, tRow, tCol, testCasteling) {
         }
     }
     // Check if any opponent piece can attack the king's location
-    otherPlayer = currentPlayer === "White" ? "Black" : "White";
+    otherPlayer = currentPlayer === "Bitcoin" ? "Big Bank" : "Bitcoin";
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
             if (thisBoard[i][j].color !== currentPlayer) {
@@ -321,34 +271,6 @@ function isCheck(board, fRow, fCol, tRow, tCol, testCasteling) {
                 else if (thisBoard[i][j].type === "queen") { if (queenMove(thisBoard, i, j, kRow, kCol, false)) return true; }
                 else if (thisBoard[i][j].type === "king") { if (kingMove(thisBoard, i, j, kRow, kCol, false, false)) return true; }
             }
-        }
-    }
-    if (testCasteling) {
-        if (currentPlayer === "White" && board[fRow][fCol].type === "rook") {
-            if (wBigCastle && fCol === 0) {
-                wBigCastle = false;
-                if (!wBigCastleAt) { wBigCastleAt = history.length; }
-            }
-            if (wSmallCastle && fCol === 7) {
-                wSmallCastle = false;
-                if (!wSmallCastleAt) { wSmallCastleAt = history.length; }
-            }
-        } else if (currentPlayer === "Black" && board[fRow][fCol].type === "rook") {
-            if (bBigCastle && fCol === 0) {
-                bBigCastle = false;
-                if (!bBigCastleAt) { bBigCastleAt = history.length; }
-            }
-            if (bSmallCastle && fCol === 7) {
-                bSmallCastle = false;
-                if (!bSmallCastleAt) { bSmallCastleAt = history.length; }
-            }
-        }
-        if (board[fRow][fCol].type === "king") {
-            currentPlayer === "White" ? (wBigCastle = false, wSmallCastle = false) : (bBigCastle = false, bSmallCastle = false);
-            if (currentPlayer === "White" && !wBigCastleAt) { wBigCastleAt = history.length; }
-            if (currentPlayer === "White" && !wSmallCastleAt) { wSmallCastleAt = history.length; }
-            if (currentPlayer === "Black" && !bBigCastleAt) { bBigCastleAt = history.length; }
-            if (currentPlayer === "Black" && !bSmallCastleAt) { bSmallCastleAt = history.length; }
         }
     }
     return false;

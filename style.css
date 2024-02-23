@@ -113,6 +113,7 @@ span {
 }
 
 .modal {
+    margin: 25%;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -133,18 +134,17 @@ span {
 }
 
 .modal-btns button {
-    font-size: 1.2em;
+    font-size: 1.8em;
 	font-family: MyFont;
     font-weight: 100;
     padding: 10px;
-    border: 20px solid black;
+    border: 2px solid black;
     border-radius: 15px;
     color: grey;
     cursor: pointer;
     background-color: black;
     font-weight: bold;
     user-select: none;
-    height: 40px;
 }
 
 .modal-btns button:hover {
