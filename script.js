@@ -34,9 +34,10 @@ for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
         if (i === 0 & j === 2) board[i][j] = new Piece("Big Bank", "bailout.png", "queen"); // Big Bank queen
         else if (i === 0 & j === 5) board[i][j] = new Piece("Big Bank", "bailout.png", "queen"); // Big Bank queen
-        else if (i === 1 & j === 4) board[i][j] = new Piece("Big Bank", "bailout.png", "queen"); // Big Bank queen
-        else if (i === 1 & j === 2) board[i][j] = new Piece("Big Bank", "bailout.png", "queen"); // Big Bank queen
-        else if (i === 1 & j === 5) board[i][j] = new Piece("Big Bank", "bailout.png", "queen"); // Big Bank queen
+        else if (i === 1 & j === 4) board[i][j] = new Piece("", "  ", "");
+        else if (i === 1 & j === 2) board[i][j] = new Piece("", "  ", "");
+        else if (i === 1 & j === 3) board[i][j] = new Piece("", "  ", "");
+        else if (i === 1 & j === 5) board[i][j] = new Piece("", "  ", "");
         else if (i === 0 & j === 4) board[i][j] = new Piece("Big Bank", "aid.png", "king"); // Big Bank king
         else if (i === 2) board[i][j] = new Piece("Bitcoin", "sir.png", "pawn"); // Bitcoin pawn
         else if (i === 3) board[i][j] = new Piece("Bitcoin", "sir.png", "pawn"); // Bitcoin pawn
@@ -140,9 +141,6 @@ function movePiece(selectedPiece, targetPiece) {
     let move = false;
 
     if (board[fromRow][fromCol].type === "pawn") move = pawnMove(board, fromRow, fromCol, toRow, toCol, currentPlayer, true, true);
-    else if (board[fromRow][fromCol].type === "knight") move = knightMove(board, fromRow, fromCol, toRow, toCol, true);
-    else if (board[fromRow][fromCol].type === "bishop") move = bishopMove(board, fromRow, fromCol, toRow, toCol, true);
-    else if (board[fromRow][fromCol].type === "rook") move = rookMove(board, fromRow, fromCol, toRow, toCol, true, true);
     else if (board[fromRow][fromCol].type === "queen") move = queenMove(board, fromRow, fromCol, toRow, toCol, true);
     else if (board[fromRow][fromCol].type === "king") move = kingMove(board, fromRow, fromCol, toRow, toCol, true, true);
 
@@ -152,7 +150,7 @@ function movePiece(selectedPiece, targetPiece) {
         board[fromRow][fromCol] = new Piece("", "  ", "");
         currentPlayer = currentPlayer === "Bitcoin" ? "Big Bank" : "Bitcoin";
         turnIndicator.textContent = `Current turn: ${currentPlayer}`;
-        if (!((toRow == 0 || toRow == 7) && board[toRow][toCol].type === "pawn")) { updateBoard(board, true); }
+        updateBoard(board, true);
         isTheEnd();
     }
 }
