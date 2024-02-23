@@ -364,7 +364,7 @@ function endModal(result) {
     if (result === "Draw") {
         document.querySelector('.message').innerHTML = 'Draw';
     } else {
-        document.querySelector('.message').innerHTML = result + ' pieces has won';
+        document.querySelector('.message').innerHTML = result + ' team wins!';
     }
     modal.classList.add('active');
 }

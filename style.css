@@ -116,13 +116,14 @@ span {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: white;
+    background-color: grey;
     border-radius: 10px;
     width: 25%;
     height: 15%;
     border: 2px solid black;
     font-family: MyFont;
     font-weight: 100;
+    font-size: 1.5em;
 }
 
 .modal-btns {
@@ -132,11 +133,11 @@ span {
 }
 
 .modal-btns button {
-    font-size: 16;
+    font-size: 1.2em;
 	font-family: MyFont;
     font-weight: 100;
     padding: 10px;
-    border: 2px solid black;
+    border: 20px solid black;
     border-radius: 15px;
     color: grey;
     cursor: pointer;
