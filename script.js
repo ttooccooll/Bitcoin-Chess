@@ -344,7 +344,7 @@ function undo() {
         if (history.length == wSmallCastleAt) { wSmallCastle = true; wSmallCastleAt = null; }
         if (history.length == bSmallCastleAt) { bSmallCastle = true; bSmallCastleAt = null; }
         updateBoard(board, false);
-        currentPlayer = currentPlayer === "White" ? "Black" : "White";
+        currentPlayer = currentPlayer === "Bitcoin" ? "Big Bank" : "Bitcoin";
         turnIndicator.textContent = `Current turn: ${currentPlayer}`;
     }
 }
