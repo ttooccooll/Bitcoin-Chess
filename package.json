@@ -1,0 +1,15 @@
+{
+    "name": "bitcoin-chess",
+    "version": "1.0.0",
+    "description": "",
+    "main": "script.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "nprofile1qqswj689pvth5qy7hktl5zyp8nt0hrvv8dg9nnstdmctrkc4mv4gqwsprpmhxw309a3xjemzv9j8qcewd3hkxctv8g6rsdpcqy88wumn8ghj7mn0wvhxcmmv9uq3xamnwvaz7tmwdaehgu3wvderqtnzv9eqgc6kv2",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.18.2"
+    }
+  }
