@@ -293,9 +293,9 @@ function isTheEnd() {
             }
         }
     }
-    otherPlayer = currentPlayer === "White" ? "Black" : "White";
+    otherPlayer = currentPlayer === "Bitcoin" ? "Big Bank" : "Bitcoin";
     if (isCheck(board, 0, 0, 0, 0, false)) endModal(otherPlayer);
-    else endModal("Draw");
+    else endModal("Stalemate");
 }
 
 function endModal(result) {
@@ -305,8 +305,8 @@ function endModal(result) {
     document.querySelector(".btn-queen").style.display = "none";
     document.querySelector(".btn-close").style.display = "block";
     document.querySelector(".btn-refresh").style.display = "block";
-    if (result === "Draw") {
-        document.querySelector('.message').innerHTML = 'Draw';
+    if (result === "Stalemate") {
+        document.querySelector('.message').innerHTML = 'Stalemate - We all live happily ever after! Yay!';
     } else {
         document.querySelector('.message').innerHTML = result + ' team wins!';
     }
