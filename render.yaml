@@ -3,6 +3,7 @@
 services:
   - type: web
     name: static-site
-    buildCommand: npm run build
+    buildCommand: echo "Deploying static files"
+    directory: .
     publish: public
 
