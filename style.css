@@ -208,6 +208,22 @@ span {
     font-weight: bold;
     user-select: none;
     margin-right: 200px;
+    margin-bottom: 10px;
+}
+
+.btn-faq {
+    font-size: 1.8em;
+	font-family: MyFont;
+    font-weight: 100;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 15px;
+    color: grey;
+    cursor: pointer;
+    background-color: black;
+    font-weight: bold;
+    user-select: none;
+    margin-right: 200px;
 }
 
 .window-btns button:hover {
