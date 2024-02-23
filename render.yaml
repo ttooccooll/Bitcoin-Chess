@@ -1,0 +1,8 @@
+# render.yaml
+
+services:
+  - type: web
+    name: static-site
+    buildCommand: npm run build
+    publish: public
+
