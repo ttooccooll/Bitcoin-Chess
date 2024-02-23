@@ -148,7 +148,6 @@ function movePiece(selectedPiece, targetPiece) {
     if (move) {
         board[toRow][toCol] = board[fromRow][fromCol];
         board[fromRow][fromCol] = new Piece("", "  ", "");
-        pawnToPiece();
         currentPlayer = currentPlayer === "White" ? "Black" : "White";
         turnIndicator.textContent = `Current turn: ${currentPlayer}`;
         if (!((toRow == 0 || toRow == 7) && board[toRow][toCol].type === "pawn")) { updateBoard(board, true); }
@@ -355,13 +354,6 @@ function isCheck(board, fRow, fCol, tRow, tCol, testCasteling) {
     return false;
 }
 
-function pawnToPiece() {
-    for (let i = 0; i < 8; i++) {
-        if (board[0][i].type === "pawn") pawnToPieceModal();
-        if (board[7][i].type === "pawn") pawnToPieceModal();
-    }
-}
-
 function isTheEnd() {
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 8; j++) {
@@ -401,26 +393,26 @@ function endModal(result) {
     modal.classList.add('active');
 }
 
-function pawnToPieceModal() {
-    document.querySelector(".btn-rook").style.display = "block";
-    document.querySelector(".btn-knight").style.display = "block";
-    document.querySelector(".btn-bishop").style.display = "block";
-    document.querySelector(".btn-queen").style.display = "block";
-    document.querySelector(".btn-close").style.display = "none";
-    document.querySelector(".btn-refresh").style.display = "none";
-}
-
-
 function closeBtn() {
     modal.classList.remove('active');
+    const audio = new Audio('boom.m4a');
+    audio.play();
 }
 
 function refresh() {
-    window.location.reload();
+    const audio = new Audio('boom.m4a');
+    audio.play();
+    document.body.classList.add('shake');
+    setTimeout(() => {
+        window.location.reload();
+    }, 700);
 }
 
 function undo() {
     if (history.length > 1) {
+        const audio = new Audio('back.m4a');
+        audio.play();
+        audio.volume = .4;
         history.length = history.length - 1;
         for (let i = 0; i < 8; i++) {
             for (let j = 0; j < 8; j++) {
