@@ -1,3 +1,9 @@
+@font-face {
+	font-family: MyFont;
+	src: url(OldeEnglishRegular-Zd2J.ttf);
+}
+
+
 body {
     font-family: Courier New, monospace;
     pointer-events: auto;
@@ -10,25 +16,30 @@ body.modal-open {
 h1 {
     text-align: center;
     color: white;
-    line-height: 0.9;
-    font-size: 20px;
+    font-size: 2.8em;
     border: 5px solid black;
     border-radius: 5px;
     background-color: black;
     width: fit-content;
+    height: fit-content;
     margin: 0 auto;
+	font-family: MyFont;
+    font-weight: 100;
 }
 
 h4 {
     text-align: center;
     color: white;
-    font-size: 15px;
+    font-size: 1.5em;
     line-height: 0.0;
-    border: 10px solid black;
+    border: .7em solid black;
     border-radius: 5px;
     background-color: black;
     width: fit-content;
+    height: fit-content;
     margin: 5px auto;
+    font-family: MyFont;
+    font-weight: 100;
 }
 
 table {
@@ -97,6 +108,8 @@ span {
     display: none;
     z-index: 999;
     justify-content: center;
+    font-family: MyFont;
+    font-weight: 100;
 }
 
 .modal {
@@ -108,6 +121,8 @@ span {
     width: 25%;
     height: 15%;
     border: 2px solid black;
+    font-family: MyFont;
+    font-weight: 100;
 }
 
 .modal-btns {
@@ -118,7 +133,8 @@ span {
 
 .modal-btns button {
     font-size: 16;
-    font-family: Courier New, monospace;
+	font-family: MyFont;
+    font-weight: 100;
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
@@ -143,8 +159,9 @@ span {
 }
 
 .btn-refresh {
-    font-size: 20px;
-    font-family: Courier New, monospace;
+    font-size: 1.8em;
+	font-family: MyFont;
+    font-weight: 100;
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
@@ -158,8 +175,9 @@ span {
 }
 
 .btn-undo {
-    font-size: 20px;
-    font-family: Courier New, monospace;
+    font-size: 1.8em;
+	font-family: MyFont;
+    font-weight: 100;
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
