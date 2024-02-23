@@ -81,6 +81,8 @@ function updateBoard(board, save) {
     }
 }
 
+
+
 // Handle the click event
 function handleClick(event) {
     // Get the row and column of the clicked cell and change the color of pieces
@@ -91,12 +93,40 @@ function handleClick(event) {
     }
     if (board[row][col].color === currentPlayer) {
         selectedPiece = { row, col };
-        event.target.classList.add("piece-selected");
+        if (board[row][col].type === "pawn") {
+            event.target.classList.add("piece-selected");
+            const audio = new Audio('pawngrab.mp3');
+            audio.play();
+        } else if (board[row][col].type === "queen") {
+            event.target.classList.add("piece-selected");
+            const audio = new Audio('grunt1.mp3');
+            audio.play();
+        } else if (board[row][col].type === "king") {
+            event.target.classList.add("piece-selected");
+            const audio = new Audio('kings.mp3');
+            audio.volume = 0.4;
+            audio.play();
+        }
     } else {
         if (!selectedPiece) return;
         const targetPiece = { row, col };
         movePiece(selectedPiece, targetPiece);
         selectedPiece = null;
+        if (board[row][col].type === "pawn") {
+            const audio = new Audio('pawnmove.mp3');
+            audio.volume = 0.1;
+            audio.play();
+        } else if (board[row][col].type === "queen") {
+            event.target.classList.add("piece-selected");
+            const audio = new Audio('grunt.mp3');
+            audio.volume = 0.5;
+            audio.play();
+        } else if (board[row][col].type === "king") {
+            event.target.classList.add("piece-selected");
+            const audio = new Audio('kingm.mp3');
+            audio.volume = 0.3;
+            audio.play();
+        }
     }
 }
 
