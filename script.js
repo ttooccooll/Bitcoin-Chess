@@ -5,7 +5,7 @@ const modal = document.querySelector('.modal-container');
 
 // Set the text content, color, and alignment for the turn indicator and add it to the body
 turnIndicator.textContent = "Current turn: White";
-turnIndicator.style.color = 'white';
+turnIndicator.style.color = 'grey';
 turnIndicator.style.textAlign = 'center';
 document.body.appendChild(turnIndicator);
 

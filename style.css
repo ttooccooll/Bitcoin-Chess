@@ -15,10 +15,10 @@ body.modal-open {
 
 h1 {
     text-align: center;
-    color: white;
+    color: grey;
     font-size: 2.8em;
     border: 5px solid black;
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: black;
     width: fit-content;
     height: fit-content;
@@ -29,11 +29,11 @@ h1 {
 
 h4 {
     text-align: center;
-    color: white;
+    color: grey;
     font-size: 1.5em;
     line-height: 0.0;
     border: .7em solid black;
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: black;
     width: fit-content;
     height: fit-content;
@@ -137,8 +137,8 @@ span {
     font-weight: 100;
     padding: 10px;
     border: 2px solid black;
-    border-radius: 5px;
-    color: white;
+    border-radius: 15px;
+    color: grey;
     cursor: pointer;
     background-color: black;
     font-weight: bold;
@@ -164,8 +164,8 @@ span {
     font-weight: 100;
     padding: 10px;
     border: 2px solid black;
-    border-radius: 5px;
-    color: white;
+    border-radius: 15px;
+    color: grey;
     cursor: pointer;
     background-color: black;
     font-weight: bold;
@@ -180,8 +180,8 @@ span {
     font-weight: 100;
     padding: 10px;
     border: 2px solid black;
-    border-radius: 5px;
-    color: white;
+    border-radius: 15px;
+    color: grey;
     cursor: pointer;
     background-color: black;
     font-weight: bold;
