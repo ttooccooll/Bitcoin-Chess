@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: static-site
-    buildCommand: echo "Deploying static files"
-    directory: .
-    publish: public
-
