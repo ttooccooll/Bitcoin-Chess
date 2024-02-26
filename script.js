@@ -361,7 +361,13 @@ function openFaqModal() {
     audio.play();
     const audio1 = new Audio('notgood.mp3');
     audio1.volume = 0.2;
-    audio1.play();
+    
+    if (audio1.paused) {
+        audio1.play();
+    } else {
+        console.log("Audio is already playing.");
+    }
+    
 }
 
 function closeFaqModal() {
