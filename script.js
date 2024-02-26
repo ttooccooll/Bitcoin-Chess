@@ -311,9 +311,11 @@ function endModal(result) {
         document.querySelector('.message').innerHTML = result + ' team wins! We hope that you were invested in the more secure financial system.';
     }
     modal.classList.add('active');
-    const audio = new Audio('notgood.wav');
-    audio.volume = 0.2;
+    const audio = new Audio('pawngrab.mp3');
     audio.play();
+    const audio1 = new Audio('notgood.mp3');
+    audio1.volume = 0.2;
+    audio1.play();
 }
 
 function closeBtn() {
@@ -357,6 +359,9 @@ function openFaqModal() {
     faqModal.style.display = 'block';
     const audio = new Audio('pawngrab.mp3');
     audio.play();
+    const audio1 = new Audio('notgood.mp3');
+    audio1.volume = 0.2;
+    audio1.play();
 }
 
 function closeFaqModal() {
