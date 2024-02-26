@@ -351,3 +351,36 @@ function undo() {
         turnIndicator.textContent = `Current turn: ${currentPlayer}`;
     }
 }
+
+function openFaqModal() {
+    const faqModal = document.getElementById('faqModal');
+    faqModal.style.display = 'block';
+    const audio = new Audio('pawngrab.mp3');
+    audio.play();
+}
+
+function closeFaqModal() {
+    const faqModal = document.getElementById('faqModal');
+    faqModal.style.display = 'none';
+    const audio = new Audio('boom.m4a');
+    audio.play();
+}
+
+
+function checkPawnCaptures(board) {
+    let bitcoinPawnsRemaining = 0;
+
+    // Iterate over the board to count Bitcoin's remaining pawns
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+            if (board[i][j].color === "Bitcoin" && board[i][j].type === "pawn") {
+                bitcoinPawnsRemaining++;
+            }
+        }
+    }
+
+    // If all Bitcoin's pawns are captured, trigger end modal with "Big Bank" as the winner
+    if (bitcoinPawnsRemaining === 0) {
+        endModal("Big Bank");
+    }
+}

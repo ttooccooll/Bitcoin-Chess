@@ -133,14 +133,14 @@ span {
 }
 
 .modal {
-    margin: 10%;
+    margin: 5%;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
     background-color: grey;
     border-radius: 10px;
-    width: 25%;
-    height: 15%;
+    width: fit-content;
+    height: fit-content;
     border: 2px solid black;
     font-family: MyFont;
     font-weight: 100;
