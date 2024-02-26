@@ -299,6 +299,9 @@ function isTheEnd() {
 }
 
 function endModal(result) {
+    const audio = new Audio('notgood.wav');
+    audio.volume = 0.2;
+    audio.play();
     document.querySelector(".btn-rook").style.display = "none";
     document.querySelector(".btn-knight").style.display = "none";
     document.querySelector(".btn-bishop").style.display = "none";
@@ -308,7 +311,7 @@ function endModal(result) {
     if (result === "Stalemate") {
         document.querySelector('.message').innerHTML = 'Stalemate - We all live happily ever after! Yay!';
     } else {
-        document.querySelector('.message').innerHTML = result + ' team wins!';
+        document.querySelector('.message').innerHTML = result + ' team wins! We hope that you were invested in the more secure financial system.';
     }
     modal.classList.add('active');
 }
