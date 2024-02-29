@@ -293,6 +293,7 @@ function isTheEnd() {
             }
         }
     }
+    checkPawnCaptures(board);
     otherPlayer = currentPlayer === "Bitcoin" ? "Big Bank" : "Bitcoin";
     if (isCheck(board, 0, 0, 0, 0, false)) endModal(otherPlayer);
     else if (currentPlayer === "Big Bank" && !isCheck(board, 0, 0, 0, 0, false)) endModal("Stalemate");
