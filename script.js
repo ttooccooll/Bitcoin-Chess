@@ -78,7 +78,7 @@ function updateBoard(board, save) {
             cell.addEventListener("click", handleClick); // Add a click event listener
             cell.textContent = history[history.length - 1][i][j].unicode;
             cell.style.backgroundImage = `url(${board[i][j].imagePath})`;
-            cell.style.backgroundSize = '80px 80px'; // Set the size of the background image
+            cell.style.backgroundSize = '70px 70px'; // Set the size of the background image
             cell.style.backgroundRepeat = 'no-repeat';
             cell.style.backgroundPosition = 'center';
             cell.textContent = ''; // Clear any previous content            
