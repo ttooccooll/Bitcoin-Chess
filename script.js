@@ -307,7 +307,7 @@ function endModal(result) {
     document.querySelector(".btn-close").style.display = "block";
     document.querySelector(".btn-refresh").style.display = "block";
     if (result === "Stalemate") {
-        document.querySelector('.message').innerHTML = 'Stalemate - We all live happily ever after! Yay!';
+        document.querySelector('.message').innerHTML = 'Stalemate - We all live happily ever after!';
     } else {
         document.querySelector('.message').innerHTML = result + ' team wins! We hope that you were invested in the more secure financial system.';
     }
