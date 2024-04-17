@@ -76,7 +76,6 @@ function updateBoard(board, save) {
             const cell = row.insertCell(); // Create a new cell
             cell.className = (i + j) % 2 === 0 ? "White" : "Black";
             cell.addEventListener("click", handleClick); // Add a click event listener
-            cell.textContent = history[history.length - 1][i][j].unicode;
             cell.style.backgroundImage = `url(${board[i][j].imagePath})`;
             cell.style.backgroundSize = '70px 70px'; // Set the size of the background image
             cell.style.backgroundRepeat = 'no-repeat';
@@ -103,9 +102,13 @@ function handleClick(event) {
             const audio = new Audio('pawngrab.mp3');
             audio.play();
         } else if (board[row][col].type === "queen") {
-            event.target.classList.add("piece-selected");
-            const audio = new Audio('grunt1.mp3');
-            audio.play();
+            if (board[row][col].color === "Bitcoin") {
+                const audio = new Audio('bq.mp3');
+                audio.play();
+            } else if (board[row][col].color === "Big Bank") {
+                const audio = new Audio('grunt1.mp3');
+                audio.play();
+            }
         } else if (board[row][col].type === "king") {
             event.target.classList.add("piece-selected");
             const audio = new Audio('kings.mp3');
@@ -123,9 +126,13 @@ function handleClick(event) {
             audio.play();
         } else if (board[row][col].type === "queen") {
             event.target.classList.add("piece-selected");
-            const audio = new Audio('grunt.mp3');
-            audio.volume = 0.5;
-            audio.play();
+            if (board[row][col].color === "Bitcoin") {
+                const audio = new Audio('bq2.mp3');
+                audio.play();
+            } else if (board[row][col].color === "Big Bank") {
+                const audio = new Audio('grunt.mp3');
+                audio.play();
+            }
         } else if (board[row][col].type === "king") {
             event.target.classList.add("piece-selected");
             const audio = new Audio('kingm.mp3');
@@ -150,6 +157,7 @@ function movePiece(selectedPiece, targetPiece) {
         board[fromRow][fromCol] = new Piece("", "  ", "");
         currentPlayer = currentPlayer === "Bitcoin" ? "Big Bank" : "Bitcoin";
         turnIndicator.textContent = `Current turn: ${currentPlayer}`;
+        checkPawnQueen(board);
         updateBoard(board, true);
         isTheEnd();
     }
@@ -389,4 +397,21 @@ function checkPawnCaptures(board) {
     if (bitcoinPawnsRemaining === 0) {
         endModal("Big Bank");
     }
+}
+
+function checkPawnQueen(board) {
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+            if (board[i][j].color === "Bitcoin" && board[i][j].type === "pawn") {
+                if (i === 0) {
+                    transformPawnToQueen(board, i, j);
+                }
+            }
+        }
+    }
+}
+
+function transformPawnToQueen(board, row, col) {
+    let bitcoinQueen = new Piece("Bitcoin", "queen.png", "queen");
+    board[row][col] = bitcoinQueen;
 }
